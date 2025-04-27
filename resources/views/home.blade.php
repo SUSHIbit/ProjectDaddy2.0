@@ -2,81 +2,89 @@
 
 @section('content')
 <div class="container mx-auto">
-    <!-- Hero Section: About Me with Full-Page Dark Background and Centered Layout -->
+    <!-- Hero Section: About Me with Full-Page Dark Background and Content Left, Text Right -->
     <section id="about-me" class="min-h-screen flex items-center justify-center bg-blue-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex flex-col items-center text-center">
-                <!-- Centered Image (Circular) -->
-                <div class="mb-10">
-                    <div class="rounded-full overflow-hidden h-64 w-64 md:h-80 md:w-80 border-4 border-blue-400 shadow-xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                <!-- Left Side - Circular Image -->
+                <div class="w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
+                    <div class="rounded-full overflow-hidden h-64 w-64 md:h-80 md:w-80 border-4 border-blue-400 shadow-xl">
                         <img src="{{ asset($settings['gm_image'] ?? 'images/default/gm.jpg') }}" alt="General Manager" 
                             class="object-cover w-full h-full transform transition duration-500 hover:scale-110">
                     </div>
                 </div>
                 
-                <!-- Centered Text Content -->
-                <div class="max-w-lg">
-                    <div class="text-blue-300 font-bold text-lg mb-1">ALPS</div>
-                    <h1 class="text-4xl font-bold text-white mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
-                    <h2 class="text-2xl text-blue-300 mb-6">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
-                    
-                    <p class="text-blue-100 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
-                    
-                    <!-- This is the info section that will toggle -->
-                    <div id="gm-details" class="mb-6 hidden">
-                        <!-- Position and contact information -->
+                <!-- Right Side - Text Content -->
+                <div class="w-full md:w-1/2">
+                    <div class="text-center md:text-left">
                         <div class="mb-4">
-                            <h3 class="font-bold text-blue-300">{{ $settings['gm_title'] ?? 'SENIOR ADVISOR' }}</h3>
-                            <p class="text-blue-100">
-                                <span class="inline-block mr-2">📧:</span>
-                                <a href="mailto:{{ $settings['gm_email'] ?? 'contact@example.com' }}" class="text-blue-300 hover:underline">
-                                    {{ $settings['gm_email'] ?? 'contact@example.com' }}
-                                </a>
-                            </p>
-                            <p class="text-blue-100">
-                                <span class="inline-block mr-2">📱:</span>
-                                {{ $settings['gm_phone'] ?? '+60 123 456 789' }}
-                            </p>
+                            <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="h-16 md:h-20 inline-block">
                         </div>
+                        <h1 class="text-4xl font-bold text-white mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
+                        <h2 class="text-2xl text-blue-300 mb-6">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
                         
-                        <!-- Company information -->
-                        <div class="mb-4">
-                            <h3 class="font-bold text-blue-300">{{ $settings['company_name'] ?? 'COMPANY NAME' }}</h3>
-                            <p class="text-blue-100">
-                                <span class="inline-block mr-2">📞:</span>
-                                {{ $settings['company_phone'] ?? '+123 456 7890' }}
-                                {{ !empty($settings['company_extension']) ? 'Ext:' . $settings['company_extension'] : '' }}
-                            </p>
-                            <p class="text-blue-100">
-                                <span class="inline-block mr-2">🌐:</span>
-                                <a href="{{ $settings['company_website'] ?? '#' }}" target="_blank" class="text-blue-300 hover:underline">
-                                    {{ $settings['company_website_display'] ?? 'company-website.com' }}
-                                </a>
-                            </p>
-                        </div>
+                        <p class="text-blue-100 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
                         
-                        <!-- Location information -->
-                        <div>
-                            <h3 class="font-bold text-blue-300">{{ $settings['location1_name'] ?? 'Headquarters' }}:</h3>
-                            <p class="text-blue-100 whitespace-pre-line">{{ $settings['location1_address'] ?? 'Company Address Line 1' }}</p>
+                        <!-- This is the info section that will toggle -->
+                        <div id="gm-details" class="hidden mb-6">
+                            <!-- Position and contact information -->
+                            <div class="mb-4">
+                                <h3 class="font-bold text-blue-300">{{ $settings['gm_title'] ?? 'SENIOR ADVISOR' }}</h3>
+                                <p class="text-blue-100">
+                                    <span class="inline-block mr-2">📧:</span>
+                                    <a href="mailto:{{ $settings['gm_email'] ?? 'contact@example.com' }}" class="text-blue-300 hover:underline">
+                                        {{ $settings['gm_email'] ?? 'contact@example.com' }}
+                                    </a>
+                                </p>
+                                <p class="text-blue-100">
+                                    <span class="inline-block mr-2">📱:</span>
+                                    {{ $settings['gm_phone'] ?? '+60 123 456 789' }}
+                                </p>
+                            </div>
                             
-                            @if(!empty($settings['location2_name']))
-                            <h3 class="font-bold text-blue-300 mt-2">{{ $settings['location2_name'] }}:</h3>
-                            <p class="text-blue-100 whitespace-pre-line">{{ $settings['location2_address'] }}</p>
-                            @endif
+                            <!-- Company information -->
+                            <div class="mb-4">
+                                <h3 class="font-bold text-blue-300">{{ $settings['company_name'] ?? 'COMPANY NAME' }}</h3>
+                                <p class="text-blue-100">
+                                    <span class="inline-block mr-2">📞:</span>
+                                    {{ $settings['company_phone'] ?? '+123 456 7890' }}
+                                    {{ !empty($settings['company_extension']) ? 'Ext:' . $settings['company_extension'] : '' }}
+                                </p>
+                                <p class="text-blue-100">
+                                    <span class="inline-block mr-2">🌐:</span>
+                                    <a href="{{ $settings['company_website'] ?? '#' }}" target="_blank" class="text-blue-300 hover:underline">
+                                        {{ $settings['company_website_display'] ?? 'company-website.com' }}
+                                    </a>
+                                </p>
+                            </div>
+                            
+                            <!-- Location information with reduced spacing -->
+                            <div class="space-y-2">
+                                <div>
+                                    <h3 class="font-bold text-blue-300">{{ $settings['location1_name'] ?? 'Headquarters' }}:</h3>
+                                    <p class="text-blue-100 whitespace-pre-line">{{ $settings['location1_address'] ?? 'Company Address Line 1' }}</p>
+                                </div>
+                                
+                                @if(!empty($settings['location2_name']))
+                                <div>
+                                    <h3 class="font-bold text-blue-300">{{ $settings['location2_name'] }}:</h3>
+                                    <p class="text-blue-100 whitespace-pre-line">{{ $settings['location2_address'] }}</p>
+                                </div>
+                                @endif
+                            </div>
                         </div>
+                        
+                        <button id="know-about-me-btn" 
+                                class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-full font-medium text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
+                            <span id="btn-text">Know About Me</span>
+                            <svg id="btn-icon-down" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            <svg id="btn-icon-up" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
                     </div>
-                    
-                    <button id="know-about-me-btn" 
-                            class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-full font-medium text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
-                        <span id="btn-text">Know About Me</span>
-                        <svg id="btn-icon-down" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                        <svg id="btn-icon-up" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
                 </div>
             </div>
         </div>
@@ -173,37 +181,31 @@
             
             @forelse ($portfolios as $index => $portfolio)
                 <div class="mb-20 last:mb-0" id="portfolio-{{ $portfolio->id }}">
-                    <h3 class="text-2xl font-bold text-blue-700 text-center mb-6">{{ $portfolio->title }}</h3>
-                    
                     <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <!-- Left side - Logo and Info -->
-                        <div class="w-full md:w-1/3">
-                            <div class="bg-white rounded-xl p-6 shadow-xl border border-blue-100 text-center">
+                        <!-- Left side - Title and Logo -->
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-left">{{ $portfolio->title }}</h3>
+                            <div class="bg-white rounded-xl p-6 shadow-xl border border-blue-100 text-center flex flex-col justify-center" style="height: 50vh;">
                                 @if($portfolio->logo_path)
-                                    <img src="{{ asset($portfolio->logo_path) }}" alt="{{ $portfolio->title }} Logo" class="max-h-40 mx-auto mb-6">
+                                    <img src="{{ asset($portfolio->logo_path) }}" alt="{{ $portfolio->title }} Logo" class="max-h-48 mx-auto">
                                 @else
-                                    <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="max-h-40 mx-auto mb-6">
-                                @endif
-                                
-                                <div class="text-gray-600 mb-4">
-                                    <p>Reference: {{ $portfolio->title }}</p>
-                                    <p class="mt-2">Created: {{ $portfolio->created_at->format('M d, Y') }}</p>
-                                </div>
-                                
-                                @if(count($portfolios) > 1)
-                                    <div class="flex justify-center mt-6 space-x-2">
-                                        @foreach($portfolios as $navIndex => $navItem)
-                                            <a href="#portfolio-{{ $navItem->id }}" 
-                                            class="h-4 w-4 rounded-full transition duration-300 ease-in-out
-                                            {{ $navIndex === $index ? 'bg-blue-600 transform scale-125' : 'bg-gray-300 hover:bg-blue-400' }}"></a>
-                                        @endforeach
-                                    </div>
+                                    <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="max-h-48 mx-auto">
                                 @endif
                             </div>
+                            
+                            @if(count($portfolios) > 1)
+                                <div class="flex justify-center mt-6 space-x-2">
+                                    @foreach($portfolios as $navIndex => $navItem)
+                                        <a href="#portfolio-{{ $navItem->id }}" 
+                                        class="h-4 w-4 rounded-full transition duration-300 ease-in-out
+                                        {{ $navIndex === $index ? 'bg-blue-600 transform scale-125' : 'bg-gray-300 hover:bg-blue-400' }}"></a>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                         
                         <!-- Right side - PDF Viewer -->
-                        <div class="w-full md:w-2/3">
+                        <div class="w-full md:w-1/2">
                             <div class="rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200" style="height: 60vh;">
                                 <embed src="{{ asset($portfolio->pdf_path) }}" type="application/pdf" width="100%" height="100%" 
                                     class="border-0">
@@ -213,7 +215,7 @@
                 </div>
             @empty
                 <div class="text-center p-8 bg-white rounded-xl shadow-xl max-w-2xl mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                     <p class="text-gray-600 text-lg">No portfolio items available yet.</p>
