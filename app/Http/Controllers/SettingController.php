@@ -24,7 +24,7 @@ class SettingController extends Controller
         $validated = $request->validate([
             'gm_name' => 'required|string|max:100',
             'gm_position' => 'required|string|max:100',
-            'gm_bio' => 'required|string',
+            'gm_bio' => 'nullable|string',
             'gm_title' => 'required|string|max:100',
             'gm_email' => 'required|email|max:100',
             'gm_phone' => 'required|string|max:30',
