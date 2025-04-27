@@ -18,11 +18,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if user is authenticated and is an admin
+        // Check if user is authenticated
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
+        
         // For now, all authenticated users are considered admins
         // If you need to add role-based permissions later, you can extend this logic
         

@@ -15,7 +15,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 require __DIR__.'/auth.php';
 
 // Admin routes (protected by authentication and admin middleware)
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
