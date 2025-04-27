@@ -46,15 +46,36 @@
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white text-center">About Company</h2>
             </div>
             
-            <!-- Right Side - YouTube Video -->
+            <!-- Right Side - YouTube Video with Fallback -->
             <div class="w-full md:w-1/2 flex justify-center items-center min-h-[50vh] md:min-h-[80vh] bg-gray-100 dark:bg-gray-700 p-4">
-                <div class="w-full aspect-w-16 aspect-h-9">
-                    <iframe class="w-full h-full" 
-                            src="{{ $settings['about_company_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}" 
-                            title="About Company" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+                <div class="w-full aspect-w-16 aspect-h-9 relative">
+                    <div id="about-company-video-container" class="w-full h-full relative">
+                        <!-- Primary Iframe -->
+                        <iframe id="about-company-video" class="w-full h-full" 
+                                src="{{ $settings['about_company_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
+                                title="About Company" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen></iframe>
+                        
+                        <!-- Fallback Content (Hidden by default) -->
+                        <div id="about-company-fallback" class="hidden absolute inset-0 bg-gray-800 bg-opacity-80 flex flex-col items-center justify-center p-4 text-center">
+                            <div class="text-red-400 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="text-white text-lg mb-4">This video cannot be displayed here.</p>
+                            <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['about_company_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
+                               target="_blank" 
+                               class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                                Watch on YouTube
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -66,15 +87,36 @@
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white text-center">Company Detail</h2>
             </div>
             
-            <!-- Left Side - YouTube Video (appears on right on mobile) -->
+            <!-- Left Side - YouTube Video with Fallback -->
             <div class="w-full md:w-1/2 flex justify-center items-center min-h-[50vh] md:min-h-[80vh] bg-gray-100 dark:bg-gray-700 p-4">
-                <div class="w-full aspect-w-16 aspect-h-9">
-                    <iframe class="w-full h-full" 
-                            src="{{ $settings['company_detail_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}" 
-                            title="Company Detail" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+                <div class="w-full aspect-w-16 aspect-h-9 relative">
+                    <div id="company-detail-video-container" class="w-full h-full relative">
+                        <!-- Primary Iframe -->
+                        <iframe id="company-detail-video" class="w-full h-full" 
+                                src="{{ $settings['company_detail_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
+                                title="Company Detail" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen></iframe>
+                        
+                        <!-- Fallback Content (Hidden by default) -->
+                        <div id="company-detail-fallback" class="hidden absolute inset-0 bg-gray-800 bg-opacity-80 flex flex-col items-center justify-center p-4 text-center">
+                            <div class="text-red-400 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="text-white text-lg mb-4">This video cannot be displayed here.</p>
+                            <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['company_detail_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
+                               target="_blank" 
+                               class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                                Watch on YouTube
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -183,6 +225,57 @@
                     }
                 });
             }
+            
+            // YouTube Video Error Handling
+            function setupYouTubeErrorHandling(videoId, fallbackId) {
+                const videoFrame = document.getElementById(videoId);
+                const fallback = document.getElementById(fallbackId);
+                
+                if (videoFrame && fallback) {
+                    // Listen for iframe load errors
+                    videoFrame.addEventListener('error', function() {
+                        videoFrame.style.display = 'none';
+                        fallback.classList.remove('hidden');
+                    });
+                    
+                    // Alternative error detection using message event
+                    window.addEventListener('message', function(event) {
+                        // Check if the message is from YouTube
+                        if (event.origin.includes('youtube.com') && event.data) {
+                            try {
+                                const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                                // Check for error events
+                                if (data.event === 'onError' && data.info && event.source === videoFrame.contentWindow) {
+                                    videoFrame.style.display = 'none';
+                                    fallback.classList.remove('hidden');
+                                }
+                            } catch (e) {
+                                // Parsing error, ignore
+                            }
+                        }
+                    });
+                    
+                    // Check if iframe is empty or blocked after a short delay
+                    setTimeout(function() {
+                        try {
+                            // Try to access the iframe content - will throw error if cross-origin issues
+                            const iframeDocument = videoFrame.contentDocument || videoFrame.contentWindow.document;
+                            // If we can access it but it's empty
+                            if (!iframeDocument.body.innerHTML) {
+                                videoFrame.style.display = 'none';
+                                fallback.classList.remove('hidden');
+                            }
+                        } catch (e) {
+                            // Cross-origin error expected, can't determine iframe content
+                            // We'll rely on other error detection methods
+                        }
+                    }, 2000);
+                }
+            }
+            
+            // Setup error handling for both videos
+            setupYouTubeErrorHandling('about-company-video', 'about-company-fallback');
+            setupYouTubeErrorHandling('company-detail-video', 'company-detail-fallback');
             
             // Contact Form Functionality
             const contactForm = document.getElementById('contact-form');

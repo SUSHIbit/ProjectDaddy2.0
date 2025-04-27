@@ -34,9 +34,16 @@ class SettingController extends Controller
         ]);
 
         // Update text settings
-        foreach (['gm_name', 'gm_position', 'gm_bio', 'company_name', 'about_company_video', 'company_detail_video', 'contact_email'] as $key) {
+        foreach (['gm_name', 'gm_position', 'gm_bio', 'company_name', 'contact_email'] as $key) {
             Setting::setValue($key, $validated[$key]);
         }
+
+        // Process YouTube URLs to ensure they're in embed format
+        $aboutVideoUrl = $this->convertYoutubeUrl($validated['about_company_video']);
+        $detailVideoUrl = $this->convertYoutubeUrl($validated['company_detail_video']);
+        
+        Setting::setValue('about_company_video', $aboutVideoUrl);
+        Setting::setValue('company_detail_video', $detailVideoUrl);
 
         // Handle GM image upload
         if ($request->hasFile('gm_image')) {
@@ -63,5 +70,39 @@ class SettingController extends Controller
         }
 
         return redirect()->route('admin.settings.edit')->with('success', 'Settings updated successfully');
+    }
+    
+    /**
+     * Convert any YouTube URL format to embed format
+     * 
+     * @param string $url
+     * @return string
+     */
+    private function convertYoutubeUrl($url)
+    {
+        // If it's already in embed format, return as is
+        if (strpos($url, 'youtube.com/embed/') !== false) {
+            return $url;
+        }
+        
+        $videoId = null;
+        
+        // Extract video ID from various YouTube URL formats
+        if (preg_match('/youtube\.com\/watch\?v=([^&\s]+)/', $url, $matches)) {
+            $videoId = $matches[1];
+        } elseif (preg_match('/youtu\.be\/([^&\s]+)/', $url, $matches)) {
+            $videoId = $matches[1];
+        } elseif (preg_match('/youtube\.com\/v\/([^&\s]+)/', $url, $matches)) {
+            $videoId = $matches[1];
+        } elseif (preg_match('/youtube\.com\/embed\/([^&\s]+)/', $url, $matches)) {
+            $videoId = $matches[1];
+        }
+        
+        // If video ID found, return embed URL, otherwise return the original URL
+        if ($videoId) {
+            return 'https://www.youtube.com/embed/' . $videoId;
+        }
+        
+        return $url;
     }
 }

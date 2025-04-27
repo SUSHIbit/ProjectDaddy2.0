@@ -111,9 +111,9 @@
                                 <label for="about_company_video" class="block text-sm font-medium text-gray-700 dark:text-gray-300">About Company Video URL</label>
                                 <input type="text" name="about_company_video" id="about_company_video" 
                                        value="{{ old('about_company_video', $settings['about_company_video'] ?? '') }}" required
-                                       placeholder="https://www.youtube.com/embed/VIDEO_ID"
+                                       placeholder="https://www.youtube.com/watch?v=VIDEO_ID"
                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Enter the embed URL for the About Company video (YouTube). Make sure to use the "embed" URL format.</p>
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Enter any YouTube URL format (watch, shortened, or embed) - the system will automatically convert it to the correct format.</p>
                                 @error('about_company_video')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
@@ -123,9 +123,9 @@
                                 <label for="company_detail_video" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Detail Video URL</label>
                                 <input type="text" name="company_detail_video" id="company_detail_video" 
                                        value="{{ old('company_detail_video', $settings['company_detail_video'] ?? '') }}" required
-                                       placeholder="https://www.youtube.com/embed/VIDEO_ID"
+                                       placeholder="https://www.youtube.com/watch?v=VIDEO_ID"
                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Enter the embed URL for the Company Detail video (YouTube). Make sure to use the "embed" URL format.</p>
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Enter any YouTube URL format (watch, shortened, or embed) - the system will automatically convert it to the correct format.</p>
                                 @error('company_detail_video')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
