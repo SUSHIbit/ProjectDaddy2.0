@@ -2,166 +2,171 @@
 
 @section('content')
 <div class="container mx-auto">
-    <!-- Hero Section: About Me -->
-    <section id="about-me" class="pt-20 pb-16 bg-gradient-to-b from-blue-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <!-- Left Side - GM Image (Circular) -->
-                <div class="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-                    <div class="relative">
-                        <!-- Circular Image with Border -->
-                        <div class="rounded-full overflow-hidden h-64 w-64 md:h-80 md:w-80 border-4 border-blue-500 shadow-xl">
-                            <img src="{{ asset($settings['gm_image'] ?? 'images/default/gm.jpg') }}" alt="General Manager" 
-                                class="object-cover w-full h-full transform transition duration-500 hover:scale-110">
-                        </div>
-                        
-                        <!-- Company Logo over the image removed as requested -->
+    <!-- Hero Section: About Me with Full-Page Dark Background and Centered Layout -->
+    <section id="about-me" class="min-h-screen flex items-center justify-center bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col items-center text-center">
+                <!-- Centered Image (Circular) -->
+                <div class="mb-10">
+                    <div class="rounded-full overflow-hidden h-64 w-64 md:h-80 md:w-80 border-4 border-blue-400 shadow-xl mx-auto">
+                        <img src="{{ asset($settings['gm_image'] ?? 'images/default/gm.jpg') }}" alt="General Manager" 
+                            class="object-cover w-full h-full transform transition duration-500 hover:scale-110">
                     </div>
                 </div>
                 
-                <!-- Right Side - GM Info & Button -->
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <div class="max-w-lg mx-auto md:mx-0">
-                        <!-- Added ALPS text above the name -->
-                        <div class="text-blue-600 font-bold text-lg mb-1">ALPS</div>
-                        <h1 class="text-4xl font-bold text-blue-800 mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
-                        <h2 class="text-2xl text-blue-600 mb-4">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
-                        <p class="text-gray-600 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
-                        
-                        <!-- This is the info section that will toggle -->
-                        <div id="gm-details" class="mb-6 hidden">
-                            <!-- Position and contact information -->
-                            <div class="mb-4">
-                                <h3 class="font-bold text-blue-700">{{ $settings['gm_title'] ?? 'SENIOR ADVISOR' }}</h3>
-                                <p class="text-gray-700">
-                                    <span class="inline-block mr-2">📧:</span>
-                                    <a href="mailto:{{ $settings['gm_email'] ?? 'contact@example.com' }}" class="text-blue-600 hover:underline">
-                                        {{ $settings['gm_email'] ?? 'contact@example.com' }}
-                                    </a>
-                                </p>
-                                <p class="text-gray-700">
-                                    <span class="inline-block mr-2">📱:</span>
-                                    {{ $settings['gm_phone'] ?? '+60 123 456 789' }}
-                                </p>
-                            </div>
-                            
-                            <!-- Company information -->
-                            <div class="mb-4">
-                                <h3 class="font-bold text-blue-700">{{ $settings['company_name'] ?? 'COMPANY NAME' }}</h3>
-                                <p class="text-gray-700">
-                                    <span class="inline-block mr-2">📞:</span>
-                                    {{ $settings['company_phone'] ?? '+123 456 7890' }}
-                                    {{ !empty($settings['company_extension']) ? 'Ext:' . $settings['company_extension'] : '' }}
-                                </p>
-                                <p class="text-gray-700">
-                                    <span class="inline-block mr-2">🌐:</span>
-                                    <a href="{{ $settings['company_website'] ?? '#' }}" target="_blank" class="text-blue-600 hover:underline">
-                                        {{ $settings['company_website_display'] ?? 'company-website.com' }}
-                                    </a>
-                                </p>
-                            </div>
-                            
-                            <!-- Location information -->
-                            <div>
-                                <h3 class="font-bold text-blue-700">{{ $settings['location1_name'] ?? 'Headquarters' }}:</h3>
-                                <p class="text-gray-700 whitespace-pre-line">{{ $settings['location1_address'] ?? 'Company Address Line 1' }}</p>
-                                
-                                @if(!empty($settings['location2_name']))
-                                <h3 class="font-bold text-blue-700 mt-2">{{ $settings['location2_name'] }}:</h3>
-                                <p class="text-gray-700 whitespace-pre-line">{{ $settings['location2_address'] }}</p>
-                                @endif
-                            </div>
+                <!-- Centered Text Content -->
+                <div class="max-w-lg">
+                    <div class="text-blue-300 font-bold text-lg mb-1">ALPS</div>
+                    <h1 class="text-4xl font-bold text-white mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
+                    <h2 class="text-2xl text-blue-300 mb-6">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
+                    
+                    <p class="text-blue-100 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
+                    
+                    <!-- This is the info section that will toggle -->
+                    <div id="gm-details" class="mb-6 hidden">
+                        <!-- Position and contact information -->
+                        <div class="mb-4">
+                            <h3 class="font-bold text-blue-300">{{ $settings['gm_title'] ?? 'SENIOR ADVISOR' }}</h3>
+                            <p class="text-blue-100">
+                                <span class="inline-block mr-2">📧:</span>
+                                <a href="mailto:{{ $settings['gm_email'] ?? 'contact@example.com' }}" class="text-blue-300 hover:underline">
+                                    {{ $settings['gm_email'] ?? 'contact@example.com' }}
+                                </a>
+                            </p>
+                            <p class="text-blue-100">
+                                <span class="inline-block mr-2">📱:</span>
+                                {{ $settings['gm_phone'] ?? '+60 123 456 789' }}
+                            </p>
                         </div>
                         
-                        <button id="know-about-me-btn" 
-                                class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-full font-medium text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
-                            <span id="btn-text">Know About Me</span>
-                            <svg id="btn-icon-down" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                            <svg id="btn-icon-up" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
+                        <!-- Company information -->
+                        <div class="mb-4">
+                            <h3 class="font-bold text-blue-300">{{ $settings['company_name'] ?? 'COMPANY NAME' }}</h3>
+                            <p class="text-blue-100">
+                                <span class="inline-block mr-2">📞:</span>
+                                {{ $settings['company_phone'] ?? '+123 456 7890' }}
+                                {{ !empty($settings['company_extension']) ? 'Ext:' . $settings['company_extension'] : '' }}
+                            </p>
+                            <p class="text-blue-100">
+                                <span class="inline-block mr-2">🌐:</span>
+                                <a href="{{ $settings['company_website'] ?? '#' }}" target="_blank" class="text-blue-300 hover:underline">
+                                    {{ $settings['company_website_display'] ?? 'company-website.com' }}
+                                </a>
+                            </p>
+                        </div>
+                        
+                        <!-- Location information -->
+                        <div>
+                            <h3 class="font-bold text-blue-300">{{ $settings['location1_name'] ?? 'Headquarters' }}:</h3>
+                            <p class="text-blue-100 whitespace-pre-line">{{ $settings['location1_address'] ?? 'Company Address Line 1' }}</p>
+                            
+                            @if(!empty($settings['location2_name']))
+                            <h3 class="font-bold text-blue-300 mt-2">{{ $settings['location2_name'] }}:</h3>
+                            <p class="text-blue-100 whitespace-pre-line">{{ $settings['location2_address'] }}</p>
+                            @endif
+                        </div>
                     </div>
+                    
+                    <button id="know-about-me-btn" 
+                            class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-full font-medium text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
+                        <span id="btn-text">Know About Me</span>
+                        <svg id="btn-icon-down" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        <svg id="btn-icon-up" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Company Section with Full-Width Video -->
+    <!-- About Company Section with Title Left, Video Right -->
     <section id="about-company" class="py-16 bg-gradient-to-b from-white to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-blue-800 text-center mb-12">About Company</h2>
-            
-            <div class="w-full max-w-5xl mx-auto">
-                <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
-                    <iframe id="about-company-video" 
-                            src="{{ $settings['about_company_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
-                            title="About Company" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <!-- Left side - Just the Title -->
+                <div class="w-full md:w-1/2 text-center">
+                    <h2 class="text-4xl font-bold text-blue-800">About Company</h2>
                 </div>
                 
-                <!-- Fallback Content (Hidden by default) -->
-                <div id="about-company-fallback" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-center">
-                    <div class="text-red-500 mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                <!-- Right side - Video -->
+                <div class="w-full md:w-1/2">
+                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
+                        <iframe id="about-company-video" 
+                                src="{{ $settings['about_company_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
+                                title="About Company" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen></iframe>
                     </div>
-                    <p class="text-gray-700 text-lg mb-4">Video cannot be displayed here.</p>
-                    <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['about_company_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
-                       target="_blank" 
-                       class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
-                        Watch on YouTube
-                    </a>
+                    
+                    <!-- Fallback Content (Hidden by default) -->
+                    <div id="about-company-fallback" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-center">
+                        <div class="text-red-500 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-4">Video cannot be displayed here.</p>
+                        <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['about_company_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
+                        target="_blank" 
+                        class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            Watch on YouTube
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Company Detail Section with Full-Width Video -->
+    <!-- Company Detail Section with Video Left, Title Right -->
     <section id="company-detail" class="py-16 bg-gradient-to-b from-blue-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-blue-800 text-center mb-12">Company Detail</h2>
-            
-            <div class="w-full max-w-5xl mx-auto">
-                <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
-                    <iframe id="company-detail-video" 
-                            src="{{ $settings['company_detail_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
-                            title="Company Detail" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <!-- Left side - Video -->
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
+                        <iframe id="company-detail-video" 
+                                src="{{ $settings['company_detail_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
+                                title="Company Detail" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen></iframe>
+                    </div>
+                    
+                    <!-- Fallback Content (Hidden by default) -->
+                    <div id="company-detail-fallback" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-center">
+                        <div class="text-red-500 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-4">Video cannot be displayed here.</p>
+                        <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['company_detail_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
+                        target="_blank" 
+                        class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            Watch on YouTube
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Fallback Content (Hidden by default) -->
-                <div id="company-detail-fallback" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-center">
-                    <div class="text-red-500 mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p class="text-gray-700 text-lg mb-4">Video cannot be displayed here.</p>
-                    <a href="{{ preg_replace('/\/embed\//', '/watch?v=', $settings['company_detail_video'] ?? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}" 
-                       target="_blank" 
-                       class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
-                        Watch on YouTube
-                    </a>
+                <!-- Right side - Just the Title -->
+                <div class="w-full md:w-1/2 text-center order-1 md:order-2">
+                    <h2 class="text-4xl font-bold text-blue-800">Company Detail</h2>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section - Portfolio on Left, PDF on Right -->
     <section id="portfolio" class="py-16 bg-gradient-to-b from-white to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-blue-800 text-center mb-12">Portfolio</h2>
@@ -171,15 +176,7 @@
                     <h3 class="text-2xl font-bold text-blue-700 text-center mb-6">{{ $portfolio->title }}</h3>
                     
                     <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <!-- PDF Viewer -->
-                        <div class="w-full md:w-2/3">
-                            <div class="rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200" style="height: 60vh;">
-                                <embed src="{{ asset($portfolio->pdf_path) }}" type="application/pdf" width="100%" height="100%" 
-                                       class="border-0">
-                            </div>
-                        </div>
-                        
-                        <!-- Logo and Navigation -->
+                        <!-- Left side - Logo and Info -->
                         <div class="w-full md:w-1/3">
                             <div class="bg-white rounded-xl p-6 shadow-xl border border-blue-100 text-center">
                                 @if($portfolio->logo_path)
@@ -188,15 +185,28 @@
                                     <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="max-h-40 mx-auto mb-6">
                                 @endif
                                 
+                                <div class="text-gray-600 mb-4">
+                                    <p>Reference: {{ $portfolio->title }}</p>
+                                    <p class="mt-2">Created: {{ $portfolio->created_at->format('M d, Y') }}</p>
+                                </div>
+                                
                                 @if(count($portfolios) > 1)
                                     <div class="flex justify-center mt-6 space-x-2">
                                         @foreach($portfolios as $navIndex => $navItem)
                                             <a href="#portfolio-{{ $navItem->id }}" 
-                                               class="h-4 w-4 rounded-full transition duration-300 ease-in-out
-                                               {{ $navIndex === $index ? 'bg-blue-600 transform scale-125' : 'bg-gray-300 hover:bg-blue-400' }}"></a>
+                                            class="h-4 w-4 rounded-full transition duration-300 ease-in-out
+                                            {{ $navIndex === $index ? 'bg-blue-600 transform scale-125' : 'bg-gray-300 hover:bg-blue-400' }}"></a>
                                         @endforeach
                                     </div>
                                 @endif
+                            </div>
+                        </div>
+                        
+                        <!-- Right side - PDF Viewer -->
+                        <div class="w-full md:w-2/3">
+                            <div class="rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200" style="height: 60vh;">
+                                <embed src="{{ asset($portfolio->pdf_path) }}" type="application/pdf" width="100%" height="100%" 
+                                    class="border-0">
                             </div>
                         </div>
                     </div>
