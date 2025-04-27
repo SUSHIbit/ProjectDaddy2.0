@@ -10,12 +10,23 @@
             </div>
             
             <div class="hidden md:flex items-center space-x-1">
-                <a href="#about-me" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Me</a>
-                <a href="#about-company" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Company</a>
-                <a href="#company-detail" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Company Detail</a>
-                <a href="#portfolio" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Portfolio</a>
-                <a href="#contact" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Contact Me</a>
-                <a href="{{ route('login') }}" class="ml-3 px-5 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-150 ease-in-out">Admin</a>
+                @auth
+                    <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Dashboard</a>
+                    
+                    <form method="POST" action="{{ route('logout') }}" class="inline-block">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-md transition duration-150 ease-in-out">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <a href="#about-me" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Me</a>
+                    <a href="#about-company" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Company</a>
+                    <a href="#company-detail" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Company Detail</a>
+                    <a href="#portfolio" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Portfolio</a>
+                    <a href="#contact" class="px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Contact Me</a>
+                    <a href="{{ route('login') }}" class="ml-3 px-5 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-150 ease-in-out">Admin</a>
+                @endauth
             </div>
             
             <!-- Mobile menu button -->
@@ -33,12 +44,23 @@
     <!-- Mobile menu (hidden by default) -->
     <div class="hidden md:hidden absolute w-full bg-white shadow-lg rounded-b-lg" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="#about-me" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Me</a>
-            <a href="#about-company" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Company</a>
-            <a href="#company-detail" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Company Detail</a>
-            <a href="#portfolio" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Portfolio</a>
-            <a href="#contact" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Contact Me</a>
-            <a href="{{ route('login') }}" class="block mt-2 mx-2 px-4 py-3 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-150 ease-in-out">Admin</a>
+            @auth
+                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Dashboard</a>
+                
+                <form method="POST" action="{{ route('logout') }}" class="block w-full">
+                    @csrf
+                    <button type="submit" class="w-full text-left px-4 py-3 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-md transition duration-150 ease-in-out">
+                        Logout
+                    </button>
+                </form>
+            @else
+                <a href="#about-me" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Me</a>
+                <a href="#about-company" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">About Company</a>
+                <a href="#company-detail" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Company Detail</a>
+                <a href="#portfolio" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Portfolio</a>
+                <a href="#contact" class="block px-4 py-3 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition duration-150 ease-in-out">Contact Me</a>
+                <a href="{{ route('login') }}" class="block mt-2 mx-2 px-4 py-3 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-150 ease-in-out">Admin</a>
+            @endauth
         </div>
     </div>
 </nav>
