@@ -22,7 +22,9 @@
                     <h1 class="text-4xl font-bold text-white mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
                     <h2 class="text-2xl text-blue-300 mb-6">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
                     
-                    <p class="text-blue-100 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
+                    @if(!empty($settings['gm_bio']))
+                    <p class="text-blue-100 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] }}</p>
+                    @endif
                     
                     <!-- This is the info section that will toggle -->
                     <div id="gm-details" class="hidden mb-6">
@@ -285,17 +287,24 @@
         const btnIconDown = document.getElementById('btn-icon-down');
         const btnIconUp = document.getElementById('btn-icon-up');
         
-        if (aboutMeBtn && gmBio && gmDetails) {
+        if (aboutMeBtn && gmDetails) {
             aboutMeBtn.addEventListener('click', function() {
-                // Toggle both bio and details
-                gmBio.classList.toggle('hidden');
+                // Toggle details
                 gmDetails.classList.toggle('hidden');
                 
-                if (!gmBio.classList.contains('hidden')) {
+                // Toggle bio only if it exists
+                if (gmBio) {
+                    gmBio.classList.toggle('hidden');
+                }
+                
+                if (gmDetails && !gmDetails.classList.contains('hidden')) {
                     btnText.textContent = 'Hide About Me';
                     btnIconDown.classList.add('hidden');
                     btnIconUp.classList.remove('hidden');
-                    gmBio.classList.add('animate-fadeIn');
+                    
+                    if (gmBio) {
+                        gmBio.classList.add('animate-fadeIn');
+                    }
                     gmDetails.classList.add('animate-fadeIn');
                 } else {
                     btnText.textContent = 'Know About Me';

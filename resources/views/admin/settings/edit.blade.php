@@ -44,9 +44,9 @@
                             
                             <div class="mt-6">
                                 <label for="gm_bio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Professional Bio</label>
-                                <textarea name="gm_bio" id="gm_bio" rows="4" required
+                                <textarea name="gm_bio" id="gm_bio" rows="4"
                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ old('gm_bio', $settings['gm_bio'] ?? '') }}</textarea>
-                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">A brief professional biography that will be displayed in the "About Me" section.</p>
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">A brief professional biography that will be displayed in the "About Me" section. This field is optional.</p>
                                 @error('gm_bio')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
