@@ -174,34 +174,27 @@
         </div>
     </section>
 
-    <!-- Portfolio Section - Portfolio on Left, PDF on Right -->
+    <!-- Portfolio Section - Title centered above logo box -->
     <section id="portfolio" class="py-16 bg-gradient-to-b from-white to-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-blue-800 text-center mb-12">Portfolio</h2>
             
             @forelse ($portfolios as $index => $portfolio)
                 <div class="mb-20 last:mb-0" id="portfolio-{{ $portfolio->id }}">
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <!-- Left side - Title and Logo -->
-                        <div class="w-full md:w-1/2">
-                            <h3 class="text-2xl font-bold text-blue-600 mb-6 text-left">{{ $portfolio->title }}</h3>
-                            <div class="bg-white rounded-xl p-6 shadow-xl border border-blue-100 text-center flex flex-col justify-center" style="height: 50vh;">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Left side with centered title above logo box -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center">
+                            <!-- Portfolio title centered above the logo box with spacing -->
+                            <h3 class="text-2xl font-bold text-blue-600 mb-8">{{ $portfolio->title }}</h3>
+                            
+                            <!-- Logo box (smaller, centered) -->
+                            <div class="bg-white rounded-xl p-6 shadow-xl border border-blue-100 flex justify-center items-center" style="height: 40vh; width: 80%;">
                                 @if($portfolio->logo_path)
-                                    <img src="{{ asset($portfolio->logo_path) }}" alt="{{ $portfolio->title }} Logo" class="max-h-48 mx-auto">
+                                    <img src="{{ asset($portfolio->logo_path) }}" alt="{{ $portfolio->title }} Logo" class="max-h-28">
                                 @else
-                                    <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="max-h-48 mx-auto">
+                                    <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="max-h-28">
                                 @endif
                             </div>
-                            
-                            @if(count($portfolios) > 1)
-                                <div class="flex justify-center mt-6 space-x-2">
-                                    @foreach($portfolios as $navIndex => $navItem)
-                                        <a href="#portfolio-{{ $navItem->id }}" 
-                                        class="h-4 w-4 rounded-full transition duration-300 ease-in-out
-                                        {{ $navIndex === $index ? 'bg-blue-600 transform scale-125' : 'bg-gray-300 hover:bg-blue-400' }}"></a>
-                                    @endforeach
-                                </div>
-                            @endif
                         </div>
                         
                         <!-- Right side - PDF Viewer -->
