@@ -30,6 +30,51 @@
                         <h2 class="text-2xl text-blue-600 mb-4">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
                         <p class="text-gray-600 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
                         
+                        <!-- This is the info section that will toggle -->
+                        <div id="gm-details" class="mb-6 hidden">
+                            <!-- Position and contact information -->
+                            <div class="mb-4">
+                                <h3 class="font-bold text-blue-700">{{ $settings['gm_title'] ?? 'SENIOR ADVISOR' }}</h3>
+                                <p class="text-gray-700">
+                                    <span class="inline-block mr-2">📧:</span>
+                                    <a href="mailto:{{ $settings['gm_email'] ?? 'contact@example.com' }}" class="text-blue-600 hover:underline">
+                                        {{ $settings['gm_email'] ?? 'contact@example.com' }}
+                                    </a>
+                                </p>
+                                <p class="text-gray-700">
+                                    <span class="inline-block mr-2">📱:</span>
+                                    {{ $settings['gm_phone'] ?? '+60 123 456 789' }}
+                                </p>
+                            </div>
+                            
+                            <!-- Company information -->
+                            <div class="mb-4">
+                                <h3 class="font-bold text-blue-700">{{ $settings['company_name'] ?? 'COMPANY NAME' }}</h3>
+                                <p class="text-gray-700">
+                                    <span class="inline-block mr-2">📞:</span>
+                                    {{ $settings['company_phone'] ?? '+123 456 7890' }}
+                                    {{ !empty($settings['company_extension']) ? 'Ext:' . $settings['company_extension'] : '' }}
+                                </p>
+                                <p class="text-gray-700">
+                                    <span class="inline-block mr-2">🌐:</span>
+                                    <a href="{{ $settings['company_website'] ?? '#' }}" target="_blank" class="text-blue-600 hover:underline">
+                                        {{ $settings['company_website_display'] ?? 'company-website.com' }}
+                                    </a>
+                                </p>
+                            </div>
+                            
+                            <!-- Location information -->
+                            <div>
+                                <h3 class="font-bold text-blue-700">{{ $settings['location1_name'] ?? 'Headquarters' }}:</h3>
+                                <p class="text-gray-700 whitespace-pre-line">{{ $settings['location1_address'] ?? 'Company Address Line 1' }}</p>
+                                
+                                @if(!empty($settings['location2_name']))
+                                <h3 class="font-bold text-blue-700 mt-2">{{ $settings['location2_name'] }}:</h3>
+                                <p class="text-gray-700 whitespace-pre-line">{{ $settings['location2_address'] }}</p>
+                                @endif
+                            </div>
+                        </div>
+                        
                         <button id="know-about-me-btn" 
                                 class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-full font-medium text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
                             <span id="btn-text">Know About Me</span>
@@ -232,19 +277,23 @@
         // About Me Button Functionality
         const aboutMeBtn = document.getElementById('know-about-me-btn');
         const gmBio = document.getElementById('gm-bio');
+        const gmDetails = document.getElementById('gm-details');
         const btnText = document.getElementById('btn-text');
         const btnIconDown = document.getElementById('btn-icon-down');
         const btnIconUp = document.getElementById('btn-icon-up');
         
-        if (aboutMeBtn && gmBio) {
+        if (aboutMeBtn && gmBio && gmDetails) {
             aboutMeBtn.addEventListener('click', function() {
+                // Toggle both bio and details
                 gmBio.classList.toggle('hidden');
+                gmDetails.classList.toggle('hidden');
                 
                 if (!gmBio.classList.contains('hidden')) {
                     btnText.textContent = 'Hide About Me';
                     btnIconDown.classList.add('hidden');
                     btnIconUp.classList.remove('hidden');
                     gmBio.classList.add('animate-fadeIn');
+                    gmDetails.classList.add('animate-fadeIn');
                 } else {
                     btnText.textContent = 'Know About Me';
                     btnIconDown.classList.remove('hidden');

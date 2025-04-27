@@ -44,14 +44,14 @@
                 {{ $slot ?? '' }}
                 @yield('content')
             </main>
-        @else
-            <!-- Public Navigation -->
-            @include('layouts.public-navigation')
+            @else
+                <!-- Public Navigation -->
+                @include('layouts.navigation')
 
-            <!-- Page Content -->
-            <main>
-                @yield('content')
-            </main>
+                <!-- Page Content -->
+                <main>
+                    @yield('content')
+                </main>
 
             <!-- Footer -->
             <footer class="bg-blue-800 text-white py-8">

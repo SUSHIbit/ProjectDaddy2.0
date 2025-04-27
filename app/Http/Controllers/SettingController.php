@@ -25,17 +25,37 @@ class SettingController extends Controller
             'gm_name' => 'required|string|max:100',
             'gm_position' => 'required|string|max:100',
             'gm_bio' => 'required|string',
+            'gm_title' => 'required|string|max:100',
+            'gm_email' => 'required|email|max:100',
+            'gm_phone' => 'required|string|max:30',
             'gm_image' => 'nullable|image|max:2048',
             'company_name' => 'required|string|max:100',
+            'company_phone' => 'required|string|max:30',
+            'company_extension' => 'nullable|string|max:30',
+            'company_website' => 'required|url|max:255',
+            'company_website_display' => 'required|string|max:100',
             'company_logo' => 'nullable|image|max:2048',
             'about_company_video' => 'required|string|max:255',
             'company_detail_video' => 'required|string|max:255',
             'contact_email' => 'required|email|max:100',
+            'location1_name' => 'required|string|max:100',
+            'location1_address' => 'required|string',
+            'location2_name' => 'nullable|string|max:100',
+            'location2_address' => 'nullable|string',
         ]);
 
         // Update text settings
-        foreach (['gm_name', 'gm_position', 'gm_bio', 'company_name', 'contact_email'] as $key) {
-            Setting::setValue($key, $validated[$key]);
+        $textFields = [
+            'gm_name', 'gm_position', 'gm_bio', 'gm_title', 'gm_email', 'gm_phone',
+            'company_name', 'company_phone', 'company_extension', 'company_website', 'company_website_display',
+            'contact_email', 
+            'location1_name', 'location1_address', 'location2_name', 'location2_address'
+        ];
+
+        foreach ($textFields as $key) {
+            if (isset($validated[$key])) {
+                Setting::setValue($key, $validated[$key]);
+            }
         }
 
         // Process YouTube URLs to ensure they're in embed format

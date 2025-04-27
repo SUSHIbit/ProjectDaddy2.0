@@ -53,6 +53,33 @@
                             </div>
                             
                             <div class="mt-6">
+                                <label for="gm_title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Title/Position</label>
+                                <input type="text" name="gm_title" id="gm_title" value="{{ old('gm_title', $settings['gm_title'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('gm_title')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-6">
+                                <label for="gm_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Email</label>
+                                <input type="email" name="gm_email" id="gm_email" value="{{ old('gm_email', $settings['gm_email'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('gm_email')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-6">
+                                <label for="gm_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Phone Number</label>
+                                <input type="text" name="gm_phone" id="gm_phone" value="{{ old('gm_phone', $settings['gm_phone'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('gm_phone')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            
+                            <div class="mt-6">
                                 <label for="gm_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Photo</label>
                                 
                                 @if(isset($settings['gm_image']))
@@ -82,6 +109,43 @@
                                 <input type="text" name="company_name" id="company_name" value="{{ old('company_name', $settings['company_name'] ?? '') }}" required
                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                 @error('company_name')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            
+                            <div class="mt-6">
+                                <label for="company_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Phone Number</label>
+                                <input type="text" name="company_phone" id="company_phone" value="{{ old('company_phone', $settings['company_phone'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('company_phone')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-6">
+                                <label for="company_extension" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Extension (Optional)</label>
+                                <input type="text" name="company_extension" id="company_extension" value="{{ old('company_extension', $settings['company_extension'] ?? '') }}"
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('company_extension')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-6">
+                                <label for="company_website" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Website URL</label>
+                                <input type="url" name="company_website" id="company_website" value="{{ old('company_website', $settings['company_website'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('company_website')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-6">
+                                <label for="company_website_display" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Website Display Text</label>
+                                <input type="text" name="company_website_display" id="company_website_display" value="{{ old('company_website_display', $settings['company_website_display'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">How the website URL should be displayed (e.g. www.example.com)</p>
+                                @error('company_website_display')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -127,6 +191,46 @@
                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Enter any YouTube URL format (watch, shortened, or embed) - the system will automatically convert it to the correct format.</p>
                                 @error('company_detail_video')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Location Information</h3>
+                            
+                            <div>
+                                <label for="location1_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Primary Location Name</label>
+                                <input type="text" name="location1_name" id="location1_name" value="{{ old('location1_name', $settings['location1_name'] ?? '') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('location1_name')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            
+                            <div class="mt-6">
+                                <label for="location1_address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Primary Location Address</label>
+                                <textarea name="location1_address" id="location1_address" rows="3" required
+                                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ old('location1_address', $settings['location1_address'] ?? '') }}</textarea>
+                                @error('location1_address')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            
+                            <div class="mt-6">
+                                <label for="location2_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Secondary Location Name (Optional)</label>
+                                <input type="text" name="location2_name" id="location2_name" value="{{ old('location2_name', $settings['location2_name'] ?? '') }}"
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @error('location2_name')
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            
+                            <div class="mt-6">
+                                <label for="location2_address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Secondary Location Address (Optional)</label>
+                                <textarea name="location2_address" id="location2_address" rows="3"
+                                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ old('location2_address', $settings['location2_address'] ?? '') }}</textarea>
+                                @error('location2_address')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
