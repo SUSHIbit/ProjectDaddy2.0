@@ -28,8 +28,8 @@ class PortfolioController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'pdf_file' => 'required|file|mimes:pdf|max:10240',
-            'logo_file' => 'nullable|image|max:2048',
+            'pdf_file' => 'required|file|mimes:pdf|max:2048',
+            'logo_file' => 'nullable|image|max:1024',
             'order' => 'integer|min:0',
             'active' => 'boolean',
         ]);
