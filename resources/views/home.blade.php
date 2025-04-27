@@ -15,18 +15,16 @@
                                 class="object-cover w-full h-full transform transition duration-500 hover:scale-110">
                         </div>
                         
-                        <!-- Company Logo (Positioned over the image) -->
-                        <div class="absolute -top-6 -right-6 bg-white rounded-full p-2 shadow-lg border-2 border-blue-500">
-                            <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" 
-                                class="h-16 w-16 object-contain">
-                        </div>
+                        <!-- Company Logo over the image removed as requested -->
                     </div>
                 </div>
                 
                 <!-- Right Side - GM Info & Button -->
                 <div class="w-full md:w-1/2 text-center md:text-left">
                     <div class="max-w-lg mx-auto md:mx-0">
-                        <h1 class="text-4xl font-bold text-blue-800 mb-3">{{ $settings['gm_name'] ?? 'John Doe' }}</h1>
+                        <!-- Added ALPS text above the name -->
+                        <div class="text-blue-600 font-bold text-lg mb-1">ALPS</div>
+                        <h1 class="text-4xl font-bold text-blue-800 mb-3">{{ $settings['gm_name'] ?? 'Mohammad \'Arief Asyraf' }}</h1>
                         <h2 class="text-2xl text-blue-600 mb-4">{{ $settings['gm_position'] ?? 'General Manager' }}</h2>
                         <p class="text-gray-600 mb-6 hidden" id="gm-bio">{{ $settings['gm_bio'] ?? 'Experienced General Manager with years of expertise in the industry.' }}</p>
                         

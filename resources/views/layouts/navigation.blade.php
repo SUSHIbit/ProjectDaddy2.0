@@ -1,11 +1,11 @@
-<!-- resources/views/layouts/public-navigation.blade.php -->
+<!-- resources/views/layouts/navigation.blade.php -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center">
                     <img src="{{ asset($settings['company_logo'] ?? 'images/default/logo.png') }}" alt="Company Logo" class="h-12 w-auto">
-                    <span class="ml-3 text-xl font-bold text-blue-800">{{ $settings['company_name'] ?? 'AVRG CO' }}</span>
+                    <!-- Company name removed as requested -->
                 </a>
             </div>
             
