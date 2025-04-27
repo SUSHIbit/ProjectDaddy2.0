@@ -1,6 +1,6 @@
 <!-- resources/views/layouts/navigation.blade.php -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg w-full">
+    <div class="container mx-auto px-4">
         <div class="flex justify-between h-20">
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center">
