@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProfileController;
@@ -27,6 +28,12 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // Portfolios
     Route::resource('portfolios', PortfolioController::class);
+    
+    // Messages
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
+    Route::patch('/messages/{message}/read', [MessageController::class, 'markAsRead'])->name('messages.mark-read');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 // Profile routes (provided by Laravel Breeze)

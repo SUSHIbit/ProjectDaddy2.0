@@ -95,7 +95,7 @@
         <div class="flex flex-col md:flex-row gap-8 items-center">
             <!-- Left side - Just the Title -->
             <div class="w-full md:w-1/2 text-center">
-                <h2 class="text-4xl font-bold text-blue-800">About Company</h2>
+                <h2 class="text-4xl font-bold text-blue-800">Company Profile</h2>
             </div>
             
             <!-- Right side - Video -->
@@ -103,7 +103,7 @@
                 <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
                     <iframe id="about-company-video" 
                             src="{{ $settings['about_company_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
-                            title="About Company" 
+                            title="Company Profile" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowfullscreen></iframe>
@@ -131,6 +131,7 @@
     </div>
 </section>
 
+
 <!-- Company Detail Section with Video Left, Title Right -->
 <section id="company-detail" class="py-16 bg-gradient-to-b from-blue-50 to-white w-full">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,7 +141,7 @@
                 <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border-2 border-blue-200">
                     <iframe id="company-detail-video" 
                             src="{{ $settings['company_detail_video'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}?origin={{ request()->getSchemeAndHttpHost() }}&enablejsapi=1" 
-                            title="Company Detail" 
+                            title="ALMA Company Profile" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowfullscreen></iframe>
@@ -167,11 +168,12 @@
             
             <!-- Right side - Just the Title -->
             <div class="w-full md:w-1/2 text-center order-1 md:order-2">
-                <h2 class="text-4xl font-bold text-blue-800">Company Detail</h2>
+                <h2 class="text-4xl font-bold text-blue-800">ALMA Company Profile</h2>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Portfolio Section - Improved layout with uniform sizing -->
 <section id="portfolio" class="py-16 bg-gradient-to-b from-white to-blue-50 w-full">

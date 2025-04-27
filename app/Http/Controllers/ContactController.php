@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -14,6 +15,13 @@ class ContactController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|max:100',
             'message' => 'required|string',
+        ]);
+
+        // Store message in database
+        Message::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'message' => $validated['message'],
         ]);
 
         // Get admin email from settings
